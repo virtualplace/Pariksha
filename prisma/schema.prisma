@@ -1,0 +1,218 @@
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider = "postgresql"
+}
+
+model User {
+  id            String       @id @default(cuid())
+  name          String
+  email         String       @unique
+  phone         String?
+  passwordHash  String
+  role          Role         @default(STUDENT)
+  attemptYear   Int?
+  createdAt     DateTime     @default(now())
+  updatedAt     DateTime     @updatedAt
+
+  enrollments   Enrollment[]
+  testAttempts  TestAttempt[]
+  quizAttempts  QuizAttempt[]
+  notes         Note[]
+
+  @@map("users")
+}
+
+model Course {
+  id          String       @id @default(cuid())
+  title       String
+  slug        String       @unique
+  description String
+  duration    String
+  price       Int          // in paise (INR)
+  tag         String?
+  subjects    String[]
+  isActive    Boolean      @default(true)
+  createdAt   DateTime     @default(now())
+
+  enrollments Enrollment[]
+  materials   StudyMaterial[]
+
+  @@map("courses")
+}
+
+model Enrollment {
+  id         String           @id @default(cuid())
+  userId     String
+  courseId   String
+  status     EnrollmentStatus @default(ACTIVE)
+  progress   Int              @default(0) // percentage 0-100
+  enrolledAt DateTime         @default(now())
+
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+  course Course @relation(fields: [courseId], references: [id], onDelete: Cascade)
+
+  @@unique([userId, courseId])
+  @@map("enrollments")
+}
+
+model Test {
+  id         String      @id @default(cuid())
+  title      String
+  category   String
+  difficulty Difficulty  @default(MEDIUM)
+  questions  Int
+  duration   Int         // in minutes
+  isActive   Boolean     @default(true)
+  createdAt  DateTime    @default(now())
+
+  attempts   TestAttempt[]
+
+  @@map("tests")
+}
+
+model TestAttempt {
+  id          String   @id @default(cuid())
+  userId      String
+  testId      String
+  score       Int
+  totalMarks  Int
+  attemptedAt DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+  test Test @relation(fields: [testId], references: [id], onDelete: Cascade)
+
+  @@map("test_attempts")
+}
+
+model StudyMaterial {
+  id        String   @id @default(cuid())
+  title     String
+  subject   String
+  fileType  String   @default("PDF")
+  fileSize  String
+  fileUrl   String
+  courseId  String?
+  createdAt DateTime @default(now())
+
+  course Course? @relation(fields: [courseId], references: [id], onDelete: SetNull)
+
+  @@map("study_materials")
+}
+
+model Question {
+  id          String   @id @default(cuid())
+  number      Int
+  questionText String
+  optionA     String
+  optionB     String
+  optionC     String
+  optionD     String
+  optionE     String?
+  answer      String
+  examName    String?
+  examYear    Int?
+  explanation String?
+  subject     String?
+  topic       String?
+  theory      String?
+  sourceFile  String?
+  createdAt   DateTime @default(now())
+
+  quizQuestions QuizQuestion[]
+  quizResponses QuizResponse[]
+
+  @@map("questions")
+}
+
+model Quiz {
+  id          String   @id @default(cuid())
+  title       String
+  description String?
+  subject     String?
+  difficulty  Difficulty @default(MEDIUM)
+  duration    Int        @default(60) // minutes
+  isActive    Boolean    @default(true)
+  createdAt   DateTime   @default(now())
+
+  questions   QuizQuestion[]
+  attempts    QuizAttempt[]
+
+  @@map("quizzes")
+}
+
+model QuizAttempt {
+  id          String   @id @default(cuid())
+  userId      String
+  quizId      String
+  score       Int      // correct count
+  total       Int      // total questions
+  timeTaken   Int      // seconds
+  submittedAt DateTime @default(now())
+
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  quiz      Quiz             @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  responses QuizResponse[]
+
+  @@map("quiz_attempts")
+}
+
+model QuizResponse {
+  id         String  @id @default(cuid())
+  attemptId  String
+  questionId String
+  selected   String? // option letter chosen, null = skipped
+
+  attempt  QuizAttempt @relation(fields: [attemptId], references: [id], onDelete: Cascade)
+  question Question    @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([attemptId, questionId])
+  @@map("quiz_responses")
+}
+
+model Note {
+  id         String   @id @default(cuid())
+  userId     String
+  content    String   // the highlighted/saved text
+  sourceType String   // "explanation" | "theory" | "question"
+  questionId String?
+  quizId     String?
+  attemptId  String?
+  createdAt  DateTime @default(now())
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  @@map("notes")
+}
+
+model QuizQuestion {
+  id         String   @id @default(cuid())
+  quizId     String
+  questionId String
+  order      Int      @default(0)
+
+  quiz     Quiz     @relation(fields: [quizId], references: [id], onDelete: Cascade)
+  question Question @relation(fields: [questionId], references: [id], onDelete: Cascade)
+
+  @@unique([quizId, questionId])
+  @@map("quiz_questions")
+}
+
+enum Role {
+  STUDENT
+  ADMIN
+}
+
+enum EnrollmentStatus {
+  ACTIVE
+  COMPLETED
+  PAUSED
+}
+
+enum Difficulty {
+  EASY
+  MEDIUM
+  HARD
+}
