@@ -18,7 +18,7 @@ export default function DashboardLayout({ children }: { children: React.ReactNod
     <div className="min-h-screen bg-gray-50 flex">
       <aside className="w-64 bg-[#0A1628] min-h-screen fixed top-0 left-0 flex flex-col">
         <div className="p-6 border-b border-white/10">
-          <Link href="/" className="text-2xl font-bold text-[#F5A623]">Polymath</Link>
+          <Link href="/" className="text-2xl font-bold text-[#F5A623]">Pariksha</Link>
           <p className="text-gray-400 text-xs mt-1">Student Dashboard</p>
         </div>
         <nav className="flex-1 p-4 space-y-1">

@@ -49,7 +49,7 @@ export default function RegisterPage() {
   return (
     <div className="w-full max-w-md">
       <div className="text-center mb-8">
-        <Link href="/" className="text-3xl font-bold text-[#F5A623]">Polymath</Link>
+        <Link href="/" className="text-3xl font-bold text-[#F5A623]">Pariksha</Link>
         <p className="text-gray-400 mt-2">Create your account and start preparing.</p>
       </div>
       <div className="bg-white/5 border border-white/10 rounded-2xl p-8">
