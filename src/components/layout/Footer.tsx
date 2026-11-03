@@ -1,5 +1,5 @@
 import Link from "next/link";
-
+const CURRENT_YEAR = new Date().getFullYear();
 export default function Footer() {
   return (
     <footer className="bg-[#0A1628] text-white pt-16 pb-8">
@@ -44,7 +44,7 @@ export default function Footer() {
         </div>
       </div>
       <div className="max-w-7xl mx-auto px-6 mt-10 pt-6 border-t border-gray-700 text-center text-sm text-gray-500">
-        © {new Date().getFullYear()} Polymath. All rights reserved.
+        © {CURRENT_YEAR} Polymath. All rights reserved.
       </div>
     </footer>
   );
