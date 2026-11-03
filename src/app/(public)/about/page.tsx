@@ -8,7 +8,7 @@ export default function AboutPage() {
   return (
     <div className="min-h-screen">
       <div className="bg-[#0A1628] py-16 px-6 text-center">
-        <h1 className="text-4xl font-bold text-white">About <span className="text-[#F5A623]">Polymath</span></h1>
+        <h1 className="text-4xl font-bold text-white">About <span className="text-[#F5A623]">Pariksha</span></h1>
         <p className="text-gray-400 mt-4 max-w-2xl mx-auto">
           We are on a mission to democratize UPSC preparation and make quality education accessible to every aspirant across India.
         </p>
@@ -19,7 +19,7 @@ export default function AboutPage() {
           <div>
             <h2 className="text-3xl font-bold text-[#0A1628]">Our <span className="text-[#F5A623]">Mission</span></h2>
             <p className="text-gray-600 mt-4 leading-relaxed">
-              Polymath was founded with a singular vision — to bridge the gap between aspiration and achievement for UPSC candidates. We combine expert faculty, cutting-edge technology, and a student-first approach to deliver results.
+              Pariksha was founded with a singular vision — to bridge the gap between aspiration and achievement for UPSC candidates. We combine expert faculty, cutting-edge technology, and a student-first approach to deliver results.
             </p>
             <p className="text-gray-600 mt-4 leading-relaxed">
               Our AI-powered evaluation system provides instant, detailed feedback on answer writing, helping students improve faster than traditional methods.

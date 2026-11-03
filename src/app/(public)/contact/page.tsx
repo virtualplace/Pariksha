@@ -35,7 +35,7 @@ export default function ContactPage() {
         <div className="space-y-6">
           <h2 className="text-2xl font-bold text-[#0A1628] mb-6">Contact Information</h2>
           {[
-            { icon: "📧", label: "Email", value: "info@polymath.in" },
+            { icon: "📧", label: "Email", value: "info@Pariksha.in" },
             { icon: "📞", label: "Phone", value: "+91 98765 43210" },
             { icon: "📍", label: "Address", value: "123 Education Hub, Connaught Place, New Delhi - 110001" },
             { icon: "🕐", label: "Office Hours", value: "Mon–Sat: 9:00 AM – 7:00 PM" },

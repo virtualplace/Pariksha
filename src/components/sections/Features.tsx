@@ -13,7 +13,7 @@ export default function Features() {
       <div className="max-w-7xl mx-auto px-6">
         <div className="text-center mb-14">
           <h2 className="text-4xl font-bold text-[#0A1628]">
-            Why Choose <span className="text-[#F5A623]">Polymath?</span>
+            Why Choose <span className="text-[#F5A623]">Pariksha?</span>
           </h2>
           <p className="text-gray-500 mt-4 max-w-xl mx-auto">
             Everything you need to crack UPSC in one platform.

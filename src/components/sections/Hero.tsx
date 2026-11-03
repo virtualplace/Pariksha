@@ -12,7 +12,7 @@ export default function Hero() {
             Achieve Your <span className="text-[#F5A623]">Civil Services</span> Dream
           </h1>
           <p className="text-gray-400 mt-6 text-lg leading-relaxed">
-            Join thousands of successful aspirants who cracked UPSC with Polymath's expert guidance, comprehensive study material, and AI-powered evaluation.
+            Join thousands of successful aspirants who cracked UPSC with Pariksha's expert guidance, comprehensive study material, and AI-powered evaluation.
           </p>
           <div className="flex gap-4 mt-8">
             <Link

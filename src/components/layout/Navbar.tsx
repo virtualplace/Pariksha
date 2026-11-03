@@ -13,7 +13,7 @@ export default function Navbar() {
     <nav className="fixed top-0 w-full z-50 bg-[#0A1628] shadow-lg">
       <div className="max-w-7xl mx-auto px-6 py-4 flex items-center justify-between">
         <Link href="/" className="text-2xl font-bold text-[#F5A623]">
-          Polymath
+          Pariksha
         </Link>
         <div className="hidden md:flex items-center gap-8">
           {navLinks.map((link) => (

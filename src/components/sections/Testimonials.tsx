@@ -1,5 +1,5 @@
 const testimonials = [
-  { name: "Priya Sharma", rank: "AIR 45, UPSC 2023", text: "Polymath's structured approach and AI evaluation helped me improve my answer writing drastically." },
+  { name: "Priya Sharma", rank: "AIR 45, UPSC 2023", text: "Pariksha's structured approach and AI evaluation helped me improve my answer writing drastically." },
   { name: "Rahul Verma", rank: "AIR 112, UPSC 2023", text: "The test series and expert faculty guidance were game changers in my UPSC journey." },
   { name: "Anjali Singh", rank: "AIR 78, UPSC 2023", text: "Best platform for UPSC preparation. The study material is comprehensive and well-structured." },
 ];
