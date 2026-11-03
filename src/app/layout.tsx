@@ -3,7 +3,7 @@ import "./globals.css";
 import AuthProvider from "@/components/AuthProvider";
 
 export const metadata: Metadata = {
-  title: "Polymath - UPSC Coaching Platform",
+  title: "Pariksha - UPSC Coaching Platform",
   description: "Empowering aspirants with quality education and expert guidance for competitive exams.",
 };
 
